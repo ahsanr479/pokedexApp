@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{%block title%}
+Pokemon
+{%endblock%}
+
+{%block main%}
+{%for p in pokemon%}
+
+ <img src="{{p['sprite']}}" alt="..." style="height: 200px; width:200px;">
+ <h2 style="position:relative; left: 250px; bottom: 200px;">{{p['name']}}</h2>
+ <p class="text-muted" style="position:relative; left: 250px; bottom: 200px;">{{p['species']}} Pokemon</p>
+ <p style="position:relative; left: 250px; bottom: 200px;">{{p['description']}}</p>
+ <div style="position:relative; left: 250px; bottom: 200px;">
+     <h4>Type</h4>
+ {%for t in p['types']%}
+  <p>{{t}}</p>
+ {%endfor%}
+ </div>
+ <div style="position:relative; left: 250px; bottom: 200px;">
+     <h4>Evolution Line</h4>
+     {%for e in p['family']['evolutionLine']%}
+  <p>{{e}}</p>
+ {%endfor%}
+ </div>
+{%endfor%}
+{% endblock %}
