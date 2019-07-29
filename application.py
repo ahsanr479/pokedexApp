@@ -1,6 +1,5 @@
 from flask import Flask, abort, redirect, render_template, request
 from pokedex import pokedex
-import pokebase as pb
 import json
 
 app = Flask(__name__)
@@ -30,7 +29,7 @@ def index():
             return apology("Enter name")
         pokemon = pokedex.get_pokemon_by_name(querry)
         print(pokemon)
-        if pokemon['error']:
+        if type(pokemon) is dict and pokemon['error']:
             return apology("No Pokemon found")
         return render_template("pokemon.html",pokemon=pokemon)
     return render_template('index.html')
